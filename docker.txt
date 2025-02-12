@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  backend:
+    image: tiangolo/uwsgi-nginx-flask:python3.8  # Pre-built Flask + Nginx
+    volumes:
+      - ./backend:/app
+    environment:
+      - DATABASE_URL=postgresql://postgres:password@db/taskdb
+    depends_on:
+      - db
+    ports:
+      - "5000:80"
+
+  frontend:
+    image: node:16  # Use official Node.js image for React
+    working_dir: /app
+    volumes:
+      - ./frontend:/app
+    command: ["npx", "create-react-app", ".", "&&", "npm", "start"]
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: connor_mccracken
+      POSTGRES_PASSWORD: Lacrossekid3
+      POSTGRES_DB: taskdb
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  db_data:
+
