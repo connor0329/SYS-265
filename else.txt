@@ -1,0 +1,13 @@
+document.addEventListener("DOMContentLoaded", function () {
+    fetch("http://quake3_server:27960") // Adjust this if using an API
+        .then(response => {
+            if (response.ok) {
+                document.getElementById("server-status").innerText = "Server is ONLINE";
+            } else {
+                document.getElementById("server-status").innerText = "Server is OFFLINE";
+            }
+        })
+        .catch(() => {
+            document.getElementById("server-status").innerText = "Could not reach the server";
+        });
+});
