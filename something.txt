@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quake 3 Server Dashboard</title>
+    <script src="status.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Quake 3 Server Dashboard</h1>
+    <p id="server-status">Checking server status...</p>
+</body>
+</html>
